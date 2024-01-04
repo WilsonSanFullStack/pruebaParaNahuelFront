@@ -23,56 +23,56 @@ const ComunasForm = () => {
     }
   }, [params.id]);
 
-  const loadTask = async (id) => {
-    const res = await fetch("http://localhost:3001/comunas/" + id);
-    // const res = await fetch("https://prueba-owrk.onrender.com/comunas/" + id);
-    const data = await res.json();
-    setComu({ comuna: data.comuna, Generacion: data.generacion, costocombustiblepeaje: data.costocombustiblepeaje, valorventaenergia: data.valorventaenergia });
-  };
+  // const loadTask = async (id) => {
+  //   const res = await fetch("http://localhost:3001/comunas/" + id);
+  //   // const res = await fetch("https://prueba-owrk.onrender.com/comunas/" + id);
+  //   const data = await res.json();
+  //   setComu({ comuna: data.comuna, Generacion: data.generacion, costocombustiblepeaje: data.costocombustiblepeaje, valorventaenergia: data.valorventaenergia });
+  // };
 
-  const handleDelete = async (id) => {
-    try {
-      // await fetch(`http://localhost:3001/comunas/delete/${id}`, {
-      await fetch(`https://prueba-owrk.onrender.com/comunas/delete/${id}`, {
-        method: "DELETE",
-      });
-      navigate("/comuna");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  // const handleDelete = async (id) => {
+  //   try {
+  //     // await fetch(`http://localhost:3001/comunas/delete/${id}`, {
+  //     await fetch(`https://prueba-owrk.onrender.com/comunas/delete/${id}`, {
+  //       method: "DELETE",
+  //     });
+  //     navigate("/comuna");
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    try {
-      if (params.id) {
-        const response = await fetch(
-          // "http://localhost:3001/comunas/" + params.id,
-          "https://prueba-owrk.onrender.com/comunas/" + params.id,
-          {
-            method: "PUT",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(comu),
-          }
-        );
-        await response.json();
-      } else {
-        // const response = await fetch("http://localhost:3001/comunas", {
-        const response = await fetch("https://prueba-owrk.onrender.com/comunas", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(comu),
-        });
-        await response.json();
-      }
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
+  //   setLoading(true);
+  //   try {
+  //     if (params.id) {
+  //       const response = await fetch(
+  //         // "http://localhost:3001/comunas/" + params.id,
+  //         "https://prueba-owrk.onrender.com/comunas/" + params.id,
+  //         {
+  //           method: "PUT",
+  //           headers: { "Content-Type": "application/json" },
+  //           body: JSON.stringify(comu),
+  //         }
+  //       );
+  //       await response.json();
+  //     } else {
+  //       // const response = await fetch("http://localhost:3001/comunas", {
+  //       const response = await fetch("https://prueba-owrk.onrender.com/comunas", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify(comu),
+  //       });
+  //       await response.json();
+  //     }
 
-      setLoading(false);
-      navigate("/comuna");
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  //     setLoading(false);
+  //     navigate("/comuna");
+  //   } catch (error) {
+  //     console.error(error);
+  //   }
+  // };
 
   const handleChange = (e) =>
     setComu({ ...comu, [e.target.name]: e.target.value });
